@@ -16,6 +16,6 @@ https://github.com/SeattleTestbed/docs/blob/master/EducationalAssignments/ABStor
 https://github.com/SeattleTestbed/docs/blob/master/EducationalAssignments/ABStoragePartTwo.md
 
 ## Fix your reference monitor
-* Examine the test cases that break your solutio
+* Examine the test cases that break your solution
 * For reference and instructions, use the link below:
 https://github.com/SeattleTestbed/docs/blob/master/EducationalAssignments/ABStoragePartThree.md
