@@ -1,0 +1,34 @@
+# This Test case is meant to break the Reference Monitor with 
+# poor defense and the barely working Reference Monitor through 
+# threading 
+
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+myfile=ABopenfile("testfile.txt",True)  #Create an AB file
+
+if "testfile2.txt.a" in listfiles():
+  removefile("testfile2.txt.a")
+if "testfile2.txt.b" in listfiles():
+  removefile("testfile2.txt.b")
+myfile2=ABopenfile("testfile.txt2",True)  #Create an AB file
+
+def thread1(str):
+  myfile.writeat(str,0)
+
+def thread2(str):
+  myfile2.writeat(str,0)
+
+def sleep_then_call(pause_in_seconds, call_function, call_args):
+  def configured_timer_function():
+    call_function(*call_args)
+  return configured_timer_function
+
+configured_function_for_new_thread1 = sleep_then_call(1, thread1, ["Sthread1E"])
+configured_function_for_new_thread2 = sleep_then_call(1, thread2, ["Sthread2E"])
+createthread(configured_function_for_new_thread1)
+createthread(configured_function_for_new_thread2)
+
+#Close the file
+myfile.close()
